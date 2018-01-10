@@ -1,6 +1,6 @@
 package bungeeCordLKMN;
 
-public class bungeeCord {
+public class BungeeCord {
 	// test
 	//test2
 }
