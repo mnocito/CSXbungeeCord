@@ -5,5 +5,4 @@ public class Spring {
 	private double mass;
 	private double deltaX;
 	private double length;
-	
 }
