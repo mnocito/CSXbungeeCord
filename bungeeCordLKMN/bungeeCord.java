@@ -33,5 +33,9 @@ public class BungeeCord {
 		this.k = k;
 	}
 	
+	private double getSpringK(double k, double n) {
+		double springk = n*k;
+		return springk;
+	}
 	
 }
