@@ -1,14 +1,17 @@
 package bungeeCordLKMN;
 
 public class BungeeCord {
-	double n; //number of sections of bungee cord
+	int n; //number of sections of bungee cord
 	double mass;//mass of the bungee cord
 	double length; //length of the bungee cord
 	double k; //k of the overall bungee cord
+	Spring [] springs = new Spring[n]; //array of springs
+	
+	
 	public double getN() {
 		return n;
 	}
-	public void setN(double n) {
+	public void setN(int n) {
 		this.n = n;
 	}
 	public double getMass() {
@@ -28,10 +31,6 @@ public class BungeeCord {
 	}
 	public void setK(double k) {
 		this.k = k;
-	}
-	
-	private double getIndividualK() {
-		return 0;
 	}
 	
 	
