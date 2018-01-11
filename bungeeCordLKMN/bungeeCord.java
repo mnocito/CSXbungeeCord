@@ -7,7 +7,6 @@ public class BungeeCord {
 	double k; //k of the overall bungee cord
 	Spring [] springs = new Spring[n]; //array of springs
 	
-	
 	public double getN() {
 		return n;
 	}
