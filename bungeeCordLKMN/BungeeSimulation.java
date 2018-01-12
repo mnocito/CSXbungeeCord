@@ -22,24 +22,21 @@ public class BungeeSimulation extends AbstractSimulation {
 	protected void doStep() {
 		if (positionY <=-40) {
 			boy.color = Color.green;
-		}else {
+		} else {
 			boy.setY(positionY);
 			positionY += g*time;
 			bungeetrail.addPoint(0, positionY);
 		}
 				
-	time+=timestep;
+		time+=timestep;
 		
 	}
 	public void initialize() {
-	
-		
 		frame.setVisible(true);
 		frame.addDrawable(bungeetrail);
 		frame.addDrawable(boy);
-		
-		
 		bungeetrail.addPoint(0, 0);
+		frame.setPreferredMinMax(-100, 100, -100, 100);
 	}
 	public static void main (String[] args) {
 		SimulationControl.createApp(new BungeeSimulation());
