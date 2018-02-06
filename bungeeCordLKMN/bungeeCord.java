@@ -12,6 +12,7 @@ public class BungeeCord {
 	}
 	public void setN(int n) {
 		this.n = n;
+		masses = new Mass[n];
 	}
 	public double getMass() {
 		return mass;
