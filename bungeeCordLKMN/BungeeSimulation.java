@@ -15,6 +15,7 @@ public class BungeeSimulation extends AbstractSimulation {
 	double time = 0;
 	double timestep  = 0.01;
 	double g = -9.81;
+	double n; //number of segments
 
 	
 	
@@ -38,6 +39,11 @@ public class BungeeSimulation extends AbstractSimulation {
 		frame.addDrawable(boy);
 		bungeetrail.addPoint(0, 0);
 		frame.setPreferredMinMax(-100, 100, -100, 100);
+		
+		for (int i = 0; i < n; i++) {
+			bungee.masses[i] = new Mass(bungee.getMass()/n, 0, g, (bungee.getLength()/n)*i);
+		}
+		
 	}
 	public static void main (String[] args) {
 		SimulationControl.createApp(new BungeeSimulation());
