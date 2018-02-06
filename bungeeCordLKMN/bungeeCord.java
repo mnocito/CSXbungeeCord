@@ -6,6 +6,7 @@ public class BungeeCord {
 	double length; //length of the bungee cord
 	double k; //k of the overall bungee cord
 	Mass[] masses = new Mass[n]; //array of springs
+	double g = -9.81;
 	
 	public double getN() {
 		return n;
@@ -32,9 +33,23 @@ public class BungeeCord {
 	public void setK(double k) {
 		this.k = k;
 	}
-	
-	private double getSpringK(double k, double n) {
+	public double getSpringK() {
 		return n*k;
 	}
-	
+	public double getInitialSpringLength() {
+		return length / n;
+	}
+	public double getInitialSpringMass() {
+		return mass / n;
+	}
+	public void updateAccelerations() {
+		for (int i = 0; i < n; i++) {
+			masses[i].setA((-masses[i].getMass() * g - n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength()) + n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength())) / getInitialSpringMass());
+		}
+	}
+	public void updateVelocities() {
+		for (int i = 0; i < n; i++) {
+			masses[i].setV(masses[i].getV());
+		}
+	}
 }
