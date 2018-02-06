@@ -5,7 +5,7 @@ public class BungeeCord {
 	double mass;//mass of the bungee cord
 	double length; //length of the bungee cord
 	double k; //k of the overall bungee cord
-	Spring [] springs = new Spring[n]; //array of springs
+	Mass[] masses = new Mass[n]; //array of springs
 	
 	public double getN() {
 		return n;

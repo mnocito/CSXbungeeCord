@@ -22,6 +22,7 @@ public class BungeeSimulation extends AbstractSimulation {
 	protected void doStep() {
 		if (positionY <=-40) {
 			boy.color = Color.green;
+			
 		} else {
 			boy.setY(positionY);
 			positionY += g*time;
