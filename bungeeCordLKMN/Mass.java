@@ -13,7 +13,6 @@ public class Mass extends Circle {
 		this.mass = mass;
 		this.v = v;
 		this.a = a;
-		this.y = y;
 		this.l = l;
 	}
 	public double getLength() {
