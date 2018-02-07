@@ -15,23 +15,22 @@ public class BungeeSimulation extends AbstractSimulation {
 	double time = 0;
 	double timestep  = 0.01;
 	double g = -9.81;
-	double n; //number of segments
 
 
 
 
 	protected void doStep() {
-		if (positionY <=-40) {
-			boy.color = Color.green;
-
-		} else {
+//		if (positionY <=-40) {
+//			boy.color = Color.green;
+//
+//		} else {
 			for (int i = 0; i < bungee.masses.length; i++) {
 				bungee.masses[i].setY(bungee.masses[i].getY()+time*bungee.masses[i].getA());
 			}
 			boy.setY(positionY);
 			positionY += g*time;
 			bungeetrail.addPoint(0, positionY);
-		}
+//		}
 
 		time+=timestep;
 
@@ -41,14 +40,22 @@ public class BungeeSimulation extends AbstractSimulation {
 		frame.addDrawable(bungeetrail);
 		frame.addDrawable(boy);
 		bungeetrail.addPoint(0, 0);
+		bungee.setN((int) control.getDouble("n"));
 		frame.setPreferredMinMax(-100, 100, -100, 100);
+		bungee.setLength(5);
 
-		for (int i = 0; i < n; i++) {
-			bungee.masses[i] = new Mass(bungee.getMass()/n, 0, g);
-			bungee.masses[i].setXY(0, (-(bungee.length/n)*i));
+//		Mass m = new Mass ( 4, 0 ,g);
+//		frame.addDrawable(m);
+//		m.setXY(0, 0);
+		for (int i = 0; i < bungee.getN(); i++) {
+			bungee.masses[i] = new Mass(bungee.getMass()/bungee.getN(), 0, g);
 			frame.addDrawable(bungee.masses[i]);
+			bungee.masses[i].setXY(0,-(bungee.getLength()/bungee.getN())*i);
 		}
 
+	}
+	public void reset() {
+		control.setAdjustableValue("n", 0);
 	}
 	public static void main (String[] args) {
 		SimulationControl.createApp(new BungeeSimulation());
