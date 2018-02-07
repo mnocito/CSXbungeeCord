@@ -16,6 +16,7 @@ public class BungeeSimulation extends AbstractSimulation {
 	double timestep  = 0.01;
 	double g = -9.81;
 
+	//TODO: make all lengths absolute
 
 
 
