@@ -47,9 +47,15 @@ public class BungeeCord {
 			masses[i].setA((-masses[i].getMass() * g - n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength()) + n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength())) / getInitialSpringMass());
 		}
 	}
-	public void updateVelocities() {
+	public void updateVelocities(double timestep) {
 		for (int i = 0; i < n; i++) {
-			masses[i].setV(masses[i].getV());
+			masses[i].setV(masses[i].getV() + masses[i].getA() * timestep);
 		}
 	}
+	public void updatePositions(double timestep) {
+		for (int i = 0; i < n; i++) {
+			masses[i].setY(masses[i].getY() + masses[i].getV() * timestep);
+		}
+	}
+	
 }

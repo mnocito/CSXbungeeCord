@@ -1,6 +1,8 @@
 package bungeeCordLKMN;
 
-public class Mass {
+import org.opensourcephysics.display.Circle;
+
+public class Mass extends Circle {
 	private double mass;
 	private double v;
 	private double a;
