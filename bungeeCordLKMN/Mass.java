@@ -6,17 +6,12 @@ public class Mass extends Circle {
 	private double mass;
 	private double v;
 	private double a;
-	private double l;
 
 
-	public Mass (double mass, double v, double a, double y, double l) {
+	public Mass (double mass, double v, double a) {
 		this.mass = mass;
 		this.v = v;
 		this.a = a;
-		this.l = l;
-	}
-	public double getLength() {
-		return l;
 	}
 	public double getMass() {
 		return mass;
