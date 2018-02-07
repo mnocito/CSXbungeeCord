@@ -5,7 +5,7 @@ public class BungeeCord {
 	double mass;//mass of the bungee cord
 	double length; //length of the bungee cord
 	double k; //k of the overall bungee cord
-	Mass[] masses = new Mass[n]; //array of springs
+	Mass[] masses = new Mass[n]; //array of masses
 	double g = -9.81;
 	
 	public double getN() {
@@ -39,12 +39,9 @@ public class BungeeCord {
 	public double getInitialSpringLength() {
 		return length / n;
 	}
-	public double getInitialSpringMass() {
-		return mass / n;
-	}
 	public void updateAccelerations() {
 		for (int i = 0; i < n; i++) {
-			masses[i].setA((-masses[i].getMass() * g - n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength()) + n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength())) / getInitialSpringMass());
+			masses[i].setA((-masses[i].getMass() * g - n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength()) + n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength())) / masses[i].getMass());
 		}
 	}
 	public void updateVelocities(double timestep) {
@@ -54,7 +51,7 @@ public class BungeeCord {
 	}
 	public void updatePositions(double timestep) {
 		for (int i = 0; i < n; i++) {
-			masses[i].setY(masses[i].getY() + masses[i].getV() * timestep);
+			masses[i].setXY(0, masses[i].getY() + masses[i].getV() * timestep);
 		}
 	}
 	

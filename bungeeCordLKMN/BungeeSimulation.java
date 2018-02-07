@@ -25,9 +25,11 @@ public class BungeeSimulation extends AbstractSimulation {
 //
 //		} else {
 			for (int i = 0; i < bungee.masses.length; i++) {
-				bungee.masses[i].setY(bungee.masses[i].getY()+time*bungee.masses[i].getA());
+				bungee.updateVelocities(timestep);
+				bungee.updatePositions(timestep);
+				bungee.updateAccelerations();
 			}
-			boy.setY(positionY);
+		//	boy.setY(positionY);
 			positionY += g*time;
 			bungeetrail.addPoint(0, positionY);
 //		}
