@@ -40,7 +40,7 @@ public class BungeeCord {
 		return length / n;
 	}
 	public void updateAccelerations() {
-		for (int i = 0; i < n; i++) {
+		for (int i = 1; i < n; i++) {
 			masses[i].setA((-masses[i].getMass() * g - n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength()) + n * k * (masses[i].getY() - masses[i - 1].getY() - getInitialSpringLength())) / masses[i].getMass());
 		}
 	}
