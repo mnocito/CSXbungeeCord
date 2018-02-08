@@ -41,7 +41,7 @@ public class BungeeSimulation extends AbstractSimulation {
 		frame.addDrawable(bungeetrail);
 		frame.addDrawable(boy);
 		bungeetrail.addPoint(0, 0);
-		bungee.setN((int) control.getDouble("n"));
+		bungee.setN((int) control.getDouble("n") + 1);
 		frame.setPreferredMinMax(-100, 100, -100, 100);
 		bungee.setLength(control.getDouble("Length"));
 		bungee.setK(control.getDouble("K (bungee cord)"));
@@ -50,7 +50,10 @@ public class BungeeSimulation extends AbstractSimulation {
 //		Mass m = new Mass ( 4, 0 ,g);
 //		frame.addDrawable(m);
 //		m.setXY(0, 0);
-		for (int i = 0; i < bungee.getN(); i++) {
+		bungee.masses[0] = new Mass(control.getDouble("boy mass"), 0, 0);
+		frame.addDrawable(bungee.masses[0]);
+		bungee.masses[0].setXY(0,  -bungee.getLength());
+		for (int i = 1; i < bungee.getN(); i++) {
 			bungee.masses[i] = new Mass(bungee.getMass()/bungee.getN(), 0, 0);
 			frame.addDrawable(bungee.masses[i]);
 			bungee.masses[i].setXY(0,(-bungee.getLength()+((bungee.getLength()/bungee.getN()))*i));
@@ -62,6 +65,7 @@ public class BungeeSimulation extends AbstractSimulation {
 		control.setAdjustableValue("Length", 0);
 		control.setAdjustableValue("Mass (bungee cord)", 0);
 		control.setAdjustableValue("K (bungee cord)", 0);
+		control.setAdjustableValue("boy mass",0);
 		
 	}
 	public static void main (String[] args) {
