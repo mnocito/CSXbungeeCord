@@ -40,9 +40,9 @@ public class BungeeCord {
 		return length / n;
 	}
 	public void updateAccelerations() {
-		masses[0].setA(((masses[0].getMass() * g) + (n * k * Math.abs(masses[1].getY() - masses[0].getY()) - getInitialSpringLength())) / masses[0].getMass());
+		masses[0].setA(((masses[0].getMass() * g) + (n * k * (Math.abs(masses[1].getY() - masses[0].getY()) - getInitialSpringLength()))) / masses[0].getMass());
 		for (int i = 1; i < n - 1; i++) {
-			masses[i].setA(((masses[i].getMass() * g) - (n * k * (Math.abs(masses[i].getY() - masses[i - 1].getY()) - getInitialSpringLength())) + (n * k * Math.abs(masses[i].getY() - masses[i + 1].getY()) - getInitialSpringLength())) / masses[i].getMass());
+			masses[i].setA(((masses[i].getMass() * g) - (n * k * (Math.abs(masses[i].getY() - masses[i - 1].getY()) - getInitialSpringLength())) + (n * k * (Math.abs(masses[i].getY() - masses[i + 1].getY()) - getInitialSpringLength()))) / masses[i].getMass());
 		}
 		masses[n - 1].setA(((masses[n - 1].getMass() * g) - (n * k * (Math.abs(masses[n - 1].getY() - masses[n - 2].getY()) - getInitialSpringLength()))) / masses[n - 1].getMass());
 		
