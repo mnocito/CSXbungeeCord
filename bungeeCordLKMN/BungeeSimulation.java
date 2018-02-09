@@ -25,9 +25,8 @@ public class BungeeSimulation extends AbstractSimulation {
 //			boy.color = Color.green;
 //
 //		} else {
-			bungee.updateVelocities(timestep);
-			bungee.updatePositions(timestep);
-			bungee.updateAccelerations();
+
+			bungee.update(timestep);
 		//	boy.setY(positionY);
 			positionY += g*time;
 			bungeetrail.addPoint(0, positionY);
