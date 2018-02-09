@@ -38,7 +38,7 @@ public class BungeeSimulation extends AbstractSimulation {
 	public void initialize() {
 		frame.setVisible(true);
 		frame.addDrawable(bungeetrail);
-		frame.addDrawable(boy);
+	//	frame.addDrawable(boy);
 		bungeetrail.addPoint(0, 0);
 		bungee.setN((int) control.getDouble("n") + 1);
 		frame.setPreferredMinMax(-100, 100, -100, 100);
@@ -56,7 +56,7 @@ public class BungeeSimulation extends AbstractSimulation {
 			bungee.masses[i] = new Mass(bungee.getMass()/(bungee.getN() - 1), 0, 0);
 			bungee.masses[i].pixRadius = 3;
 			frame.addDrawable(bungee.masses[i]);
-			bungee.masses[i].setXY(0,(-bungee.getLength()+((bungee.getLength()/bungee.getN()))*i));
+			bungee.masses[i].setXY(0,(-bungee.getLength()+((bungee.getLength()/(bungee.getN() - 1)))*i));
 		}
 
 	}
