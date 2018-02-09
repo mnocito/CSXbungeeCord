@@ -53,7 +53,8 @@ public class BungeeSimulation extends AbstractSimulation {
 		frame.addDrawable(bungee.masses[0]);
 		bungee.masses[0].setXY(0,  -bungee.getLength());
 		for (int i = 1; i < bungee.getN(); i++) {
-			bungee.masses[i] = new Mass(bungee.getMass()/bungee.getN(), 0, 0);
+			bungee.masses[i] = new Mass(bungee.getMass()/(bungee.getN() - 1), 0, 0);
+			bungee.masses[i].pixRadius = 3;
 			frame.addDrawable(bungee.masses[i]);
 			bungee.masses[i].setXY(0,(-bungee.getLength()+((bungee.getLength()/bungee.getN()))*i));
 		}
