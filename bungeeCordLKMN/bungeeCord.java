@@ -37,20 +37,29 @@ public class BungeeCord {
 		return length / (double) n;
 	}
 	public void update(double timestep) {
-		masses[0].setV(masses[0].getV() + masses[0].getA() * timestep);
+		System.out.println("mass: " + Math.abs(masses[1].getY() - masses[0].getY()));
+		System.out.println(getInitialSpringLength());
+		masses[0].setA(((masses[0].getMass() * g) + (((double) n * k) * (Math.abs(masses[1].getY() - masses[0].getY()) - getInitialSpringLength()))) / masses[0].getMass());		
+		for (int i = 1; i < n - 1; i++) {
+			System.out.println("mass" + i + ": " + Math.abs(masses[i].getY() - masses[i - 1].getY()) );
+			System.out.println(getInitialSpringLength());
+			masses[i].setA(((masses[i].getMass() * g) - (((double) n * k) * (Math.abs(masses[i].getY() - masses[i - 1].getY()) - getInitialSpringLength())) + (((double) n * k) * (Math.abs(masses[i + 1].getY() - masses[i].getY()) - getInitialSpringLength()))) / masses[i].getMass());
+		}
+		masses[0].setV(masses[0].getV() + masses[0].getA() * timestep);	
+		for (int i = 1; i < n - 1; i++) {
+			masses[i].setV(masses[i].getV() + masses[i].getA() * timestep);	
+		}
 		masses[0].setXY(0, masses[0].getY() + masses[0].getV() * timestep);
 		if (masses[0].getY() >= masses[1].getY()) {
 			masses[0].setY(masses[1].getY());
 		}
-		masses[0].setA(((masses[0].getMass() * g) + (((double) n * k) * (Math.abs(masses[1].getY() - masses[0].getY()) - getInitialSpringLength()))) / masses[0].getMass());		
 		for (int i = 1; i < n - 1; i++) {
-			masses[i].setV(masses[i].getV() + masses[i].getA() * timestep);
 			masses[i].setXY(0, masses[i].getY() + masses[i].getV() * timestep);
 			if (masses[i].getY() >= masses[i + 1].getY()) {
 				masses[i].setY(masses[i + 1].getY());
-			}
-			masses[i].setA(((masses[i].getMass() * g) - (((double) n * k) * (Math.abs(masses[i].getY() - masses[i - 1].getY()) - getInitialSpringLength())) + (((double) n * k) * (Math.abs(masses[i + 1].getY() - masses[i].getY()) - getInitialSpringLength()))) / masses[i].getMass());
+			}	
 		}
+
 	}
 	public void updateVelocities(double timestep) {
 		for (int i = 0; i < n; i++) {

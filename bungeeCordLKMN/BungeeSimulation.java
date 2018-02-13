@@ -50,15 +50,17 @@ public class BungeeSimulation extends AbstractSimulation {
 //		frame.addDrawable(m);
 //		m.setXY(0, 0);
 		bungee.masses[0] = new Mass(control.getDouble("boy mass"), 0, 0);
+	//	bungee.masses[0].setV(Math.sqrt(2 * g * bungee.getLength()));
 		frame.addDrawable(bungee.masses[0]);
-		bungee.masses[0].setXY(0,  -bungee.getLength());
+		bungee.masses[0].setXY(0,  0);
 		for (int i = 1; i < bungee.getN(); i++) {
-			bungee.masses[i] = new Mass(bungee.getMass()/(bungee.getN() - 1), 0, 0);
+			bungee.masses[i] = new Mass(bungee.getMass()/(bungee.getN()), 0, 0);
 			bungee.masses[i].pixRadius = 3;
 			frame.addDrawable(bungee.masses[i]);
-			bungee.masses[i].setXY(0,(-bungee.getLength()+((bungee.getLength()/(bungee.getN() - 1)))*i));
+			bungee.masses[i].setXY(0,(bungee.getLength()-((bungee.getLength()/(bungee.getN()))* (double) i)));
+		//	bungee.masses[1].setV(Math.sqrt(2.0 * g * (double) i * (bungee.getLength()/(bungee.getN()))));
 		}
-
+		this.setDelayTime(1);
 	}
 	public void reset() {
 		control.setAdjustableValue("n",0);
