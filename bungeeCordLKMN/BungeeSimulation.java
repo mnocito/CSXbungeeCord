@@ -54,12 +54,14 @@ public class BungeeSimulation extends AbstractSimulation {
 	//	bungee.masses[0].setV(Math.sqrt(2 * g * bungee.getLength()));
 		frame.addDrawable(bungee.masses[0]);
 		bungee.masses[0].setXY(0,  -bungee.getLength());
+	//	bungee.masses[0].setV(Math.sqrt(2.0 * g * Math.abs(bungee.masses[0].getY())));
 		for (int i = 1; i < bungee.getN(); i++) {
 			bungee.masses[i] = new Mass(bungee.getMass()/(bungee.getN()), 0, 0);
 			bungee.masses[i].pixRadius = 3;
 			frame.addDrawable(bungee.masses[i]);
 			bungee.masses[i].setXY(0,(-bungee.getLength()+((bungee.getLength()/(bungee.getN()))* (double) i)));
 		//	bungee.masses[1].setV(Math.sqrt(2.0 * g * (double) i * (bungee.getLength()/(bungee.getN()))));
+		//	bungee.masses[i].setV(Math.sqrt(2.0 * g * Math.abs(bungee.masses[i].getY())));
 		}
 		this.setDelayTime(1);
 	}
