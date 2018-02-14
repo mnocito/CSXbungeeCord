@@ -7,7 +7,7 @@ public class BungeeCord {
 	double k; //k of the overall bungee cord
 	Mass[] masses = new Mass[n]; //array of masses
 	double g = -9.81;
-	
+	double[] oldVelocities = new double[n];
 	public double getN() {
 		return n;
 	}
